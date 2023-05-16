@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model pecuaria {
+  id        Int     @id @default(autoincrement())
+  animal    String?
+  ano       Int?
+  municipio String?
+  qtd       Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model queimadas {
+  id           Int       @id @default(autoincrement())
+  satelite     String?
+  pais         String?
+  estado       String?
+  municipio    String?
+  bioma        String?
+  diassemchuva Int?
+  precipitacao Float?
+  riscofogo    Int?
+  latitude     String?
+  longitude    String?
+  frp          Int?
+  createdAt    DateTime?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model umidade_ar {
+  id                        Int       @id @default(autoincrement())
+  createdAt                 DateTime?
+  dias_precipitacao_fluvial Int?
+  t_max                     Float?
+  t_min                     Float?
+  umi_relativa_p            Float?
+  velo_vento_m_s            Float?
+  velo_vento_media_mes_m_s  Float?
+  latitude                  String?
+  longitude                 String?
+  municipio                 String?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model vac {
+  id         Int       @id @default(autoincrement())
+  comunidade String?
+  idade      String?
+  data       DateTime?
+  sexo       String?
+  qtd        Int?
+}
