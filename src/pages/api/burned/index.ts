@@ -12,12 +12,18 @@ export default async function handler(
     try {
         switch (req.method) {
             case "GET":
-                const data = await prisma.queimadas.findMany()
-                const count = data.length
-                res.status(200).json({ data: data, dados: count })
+                const data = await prisma.queimadas.findMany({
+
+                    where: {
+                        municipio: 'BOA VISTA'
+
+                    },
+                })
+                res.status(200).json({ data })
                 break;
         }
     } catch (error: any) {
+        console.log(error)
         res.status(500).json(error)
     }
 

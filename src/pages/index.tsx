@@ -30,9 +30,7 @@ export default function Home() {
         </div>
       </div>
       <div className="justify-center align-middl text-center">
-        <div className='bg-slate-50'>
-          <a href='/app/map'>MAPAS</a>
-        </div>
+
       </div>
       <Footer />
     </main>
