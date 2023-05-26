@@ -15,9 +15,10 @@ export default async function handler(
                 const data = await prisma.queimadas.findMany({
 
                     where: {
-                        municipio: 'BOA VISTA'
 
                     },
+
+                    take: 1000
                 })
                 res.status(200).json({ data })
                 break;

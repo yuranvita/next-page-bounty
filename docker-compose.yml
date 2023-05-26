@@ -1,0 +1,32 @@
+version: '4.19'
+
+services:
+  geoserver:
+    image: thinkwhere/geoserver
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./docker/geoserver_data:/opt/geoserver/data_dir
+
+    restart: always
+    depends_on:
+      - postgis
+    networks:
+      - geoserver-network
+
+  postgis:
+    image: pgrouting/pgrouting
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker/postgis_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=agro
+      - POSTGRES_PASSWORD=bounty!123
+      - POSTGRES_DB=db
+    restart: always
+    networks:
+      - geoserver-network
+
+networks:
+  geoserver-network:
